@@ -13,33 +13,9 @@
     <button type="button" value="Calcular" onclick="resolucion()">
       Calcular
     </button>
-    <script src="funciones.js">
-      /*
-			KC_EJ08
-      Crear un programa que reciba un número entero y muestre si es par o impar, positivo o negativo, o cero.
-  		*/
 
-      var n = parseInt(prompt("Introduce un número:"));
+    <p id="respuesta"></p>
 
-      var mensaje = "Número ";
-
-      if (n >= 0) {
-        mensaje += "positivo";
-        if (n % 2 === 0) {
-          mensaje += " y par";
-        } else {
-          mensaje += " e impar";
-        }
-      } else {
-        mensaje += "negativo";
-        if (n % 2 === 0) {
-          mensaje += " y par";
-        } else {
-          mensaje += " e impar";
-        }
-      }
-
-      alert(mensaje);
-    </script>
+    <script src="funciones.js"></script>
   </body>
 </html>
