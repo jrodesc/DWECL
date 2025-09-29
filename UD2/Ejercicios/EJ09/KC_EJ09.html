@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>KC_EJ09</title>
+  </head>
+  <body>
+    <label>Introduce el numero:</label>
+    <input type="number" name="numero" id="monto" required/>
+    <br />
+    <label>Introduzca a que moneda desea hacer la conversion:</label>
+    <br>
+    <input type="radio" name="conversion" id="dolares" value="dolares" required>
+    <label for="dolares">$</label>
+    <input type="radio" name="conversion" id="euros" value="euros" required checked>
+    <label for="euros">€</label>
+    <button type="button" value="Calcular" onclick="conversor()">
+      Calcular
+    </button>
+
+
+    <p>El total convertido es: <span id="respuesta"></span> <span id="moneda"></span></p>
+    <script src="funciones.js"></script>
+  </body>
+</html>
