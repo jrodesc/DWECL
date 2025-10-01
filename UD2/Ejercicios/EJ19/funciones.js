@@ -24,12 +24,10 @@ function contadorPares() {
     numeros.push(n10);
 
     let respuesta = "";
-    
     for(i = 0; i<numeros.length; i++) {
         if(numeros[i] % 2 == 0) {
             respuesta += " "+numeros[i];
         }
     }
-
     document.getElementById("respuesta").innerHTML = respuesta;
 }
