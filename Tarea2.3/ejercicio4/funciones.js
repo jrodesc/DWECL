@@ -1,4 +1,6 @@
 function escribirNombres() {
+
+  //declaramos nombre y respuesta sin inicializarlos
   let nombre = "";
   let respuesta = "";
 
@@ -23,6 +25,7 @@ function escribirNombres() {
 
 }
 
+//creamos una funcion llamada nombresWhile para hacer la operacion mediante while
 function nombresWhile(nombre) {
   respuesta = "";
   i = 0;
@@ -33,7 +36,7 @@ function nombresWhile(nombre) {
 
   return respuesta;
 }
-
+//creamos una funcion llamada nombresWhile para hacer la operacion mediante do-while
 function nombresDo(nombre) {
   respuesta = "";
   i = 0;

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+        <label for="nombre">Introduzca el nombre: </label>
+        <input type="text" id="nombre" name="nombre">
+        <br>
+        <label for="apellidos">Introduzca los apellidos: </label>
+        <input type="text" id="apellidos" name="apellidos">
+        <br>
+        <label for="sueldo">Introduzca el sueldo: </label>
+        <input type="text" id="sueldo" name="sueldo">
+        <br>
+        <label for="edad">Introduzca la edad: </label>
+        <input type="text" id="edad" name="edad">
+        <br>
+        <button type="submit" onclick="calculoSalario()" value="Calcular" id="calcular">Calcular</button>
+
+    <p id="nombreFinal"></p>
+    <p id="apellidosFinal"></p>
+    <p id="edadFinal"></p>
+    <p id="sueldoFinal"></p>
+
+    <script src="funciones.js"></script>
+</body>
+</html>
