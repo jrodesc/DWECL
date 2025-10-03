@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ejercicio 4</title>
+  </head>
+  <body>
+    <!--Ejercicio 4.- Realiza un programa en JS, usando:
+a) Un bucle FOR que pida un nombre por pantalla y lo escriba 50 veces realizando
+un salto de línea.
+b) Realiza mismo pero usando un bucle WHILE y DO..WHILE. -->
+
+    <label>Introduce un nombre</label>
+    <input type="text" id="nombre" name="nombre" required />
+    <button type="submit" value="calcular" onclick="escribirNombres()">
+      calcular
+    </button>
+
+    <p>For normal:</p>
+    <p id="respuesta"></p>
+
+    <p>while:</p>
+    <p id="respuestawhile"></p>
+
+    <p>do-while:</p>
+    <p id="respuestado"></p>
+    <script src="funciones.js"></script>
+  </body>
+</html>

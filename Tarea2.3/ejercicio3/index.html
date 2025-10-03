@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 3</title>
+  </head>
+  <body>
+    <!--Crea un programa en JS que pida al usuario que introduzca una edad y
+muestre el siguiente mensaje en función del número introducido:
+0-12: Niño
+13-26: Joven
+26-60: Adulto
+>60: Jubilado
+a) Debes comprobar que el dato introducido esté entre 0 y 70, dando el error
+pertinente en caso contrario.
+b) Pon los comentarios que estimes necesarios.
+c) Para guardar un valor del usuario utilizamos el siguiente código: var respuesta
+= prompt (“Mensaje”);-->
+    <label>Introduce una edad</label>
+    <input type="number" min="0" max="70" name="edad" id="edad" required />
+    <button type="submit" value="Calcular" onclick="edadSwitch()">
+      Calcular
+    </button>
+
+    <p id="solucion"></p>
+
+    <script src="funciones.js"></script>
+  </body>
+</html>

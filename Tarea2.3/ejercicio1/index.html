@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <!-- 
+a) Pedir al usuario que escriba el apellido del primer presidente de la democracia
+(si no sabes quién fue, busca en Google) y mientras el usuario no introduzca el
+valor correcto, dará un error, con un alert diciendo “Respuesta incorrecta,
+inténtalo otra vez”.
+b) Comenta el código.
+c) Para guardar un valor del usuario utilizamos el siguiente código: var respuesta =
+prompt (“Mensaje”);
+-->
+<label>Introduce el primer apellido del primer Presidente de la democracia</label>
+<input type="text" name="apellido" id="apellido" required>
+<button type="button" value="Calcular" onclick="apellidoPresidente()">Calcular</button>
+
+
+<p id="respuesta"></p>
+</body>
+<script src="funciones.js"></script>
+</html>
