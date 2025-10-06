@@ -14,12 +14,19 @@
       let sum = num1 + num2;
       console.log(sum);
     }
-    myCalculatorConsole(2, 3);
 
     function myCalculatorDOM(num1, num2) {
       let sum = num1 + num2;
       document.getElementById("prueba").innerHTML = sum;
     }
-    myCalculatorDOM(4, 5);
+
+
+    function myCalculator(num1, num2, myCallBack) {
+      let sum = num1 + num2;
+      myCallBack(sum);
+    }
+
+    myCalculator(5, 4, myCalculatorDOM);
+    myCalculator(5, 4, myCalculatorConsole);
   </script>
 </html>
