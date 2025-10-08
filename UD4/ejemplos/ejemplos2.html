@@ -27,5 +27,17 @@
     });
     //solo con one liners (una sola linea)
     myArray.forEach((element) => console.log(element+1));
+
+
+
+    //declaramos el array2
+    const array2 = [1, 2, 3, 4, 5, 6, 7, 8];
+
+    //declaramos el array filtrado, que filtra todos los numeros del array2 que sean menores de 5
+    const arrayFiltered = array2.filter((element) => {
+      return element<5;
+    });
+    //se muestra por pantalla el array filtrado
+    console.log(arrayFiltered);
   </script>
 </html>
