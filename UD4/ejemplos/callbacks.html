@@ -20,7 +20,6 @@
       document.getElementById("prueba").innerHTML = sum;
     }
 
-
     function myCalculator(num1, num2, myCallBack) {
       let sum = num1 + num2;
       myCallBack(sum);
@@ -28,5 +27,15 @@
 
     myCalculator(5, 4, myCalculatorDOM);
     myCalculator(5, 4, myCalculatorConsole);
+
+    function showArray(array, callback) {
+      for (let i = 0; index < array.length; index++) {
+        const element = array[index];
+        callback(element);
+      }
+    }
+
+    const myArray = ["banana", "manzana", "pera"];
+    showArray(myArray, console.log);
   </script>
 </html>

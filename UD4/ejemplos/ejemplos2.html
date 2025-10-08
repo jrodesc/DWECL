@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function showArray(array, callback) {
+      for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        callback(element);
+      }
+    }
+
+    const myArray = [1, 2, 3];
+    showArray(myArray, console.log);
+
+    //for each con function
+    myArray.forEach(function (element) {
+        console.log(element);
+    });
+    //for each con arrow function
+    myArray.forEach((element) => {
+      console.log(element);
+    });
+    //solo con one liners (una sola linea)
+    myArray.forEach((element) => console.log(element+1));
+  </script>
+</html>
