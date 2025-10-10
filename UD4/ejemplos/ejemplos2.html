@@ -19,25 +19,43 @@
 
     //for each con function
     myArray.forEach(function (element) {
-        console.log(element);
+      console.log(element);
     });
     //for each con arrow function
     myArray.forEach((element) => {
       console.log(element);
     });
     //solo con one liners (una sola linea)
-    myArray.forEach((element) => console.log(element+1));
-
-
+    myArray.forEach((element) => console.log(element + 1));
 
     //declaramos el array2
     const array2 = [1, 2, 3, 4, 5, 6, 7, 8];
 
     //declaramos el array filtrado, que filtra todos los numeros del array2 que sean menores de 5
     const arrayFiltered = array2.filter((element) => {
-      return element<5;
+      return element < 5;
     });
     //se muestra por pantalla el array filtrado
     console.log(arrayFiltered);
+    //FindIndex
+    function findIndex(array, callback) {
+      for (let i = 0; i < array.length; i++) {
+        let element = array[i];
+        if (callback(element)) {
+          return i;
+        }
+      }
+      return -1;
+    }
+
+    let index7 = findIndex(array2, (element) => {
+      return element === 7;
+    });
+    console.log(`Elemento 7 encontrado en posicion ${index7}`);
+
+    let index10 = findIndex(array2, (element) => {
+      return element === 10;
+    });
+    console.log(`Elemento 10 no encontrado en posicion ${index10}`);
   </script>
 </html>
