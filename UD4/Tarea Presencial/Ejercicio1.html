@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+/*
+1.- Haciendo referencia al punto 1.1.4 del tema, vamos a practicar con los métodos
+del objeto Array: pop(), pudh(), shift(), slice(), sort(), splice() y unshift(). 
+En cada apartado, pon un comentario con el enunciado
+del mismo antes de resolverlo, así como los comentarios con lo que hace cada línea. (5 puntos)
+*/
+
+/*
+a.	Para practicar con los métodos, pop(), shift() y slice(), crea un array llamado paises
+ = [“Méjico”, “España”, “Argentina”, “Chile”, “Colombia”, “Venezuela”,
+ “Perú”, “Costa Rica”], usa estos métodos y explica lo que hacen.
+*/
+
+paises = ["Méjico", "España", "Argentina", "Chile", "Colombia", "Venezuela", "Peru", "Costa Rica"];
+
+//el primero metodo que voy a usar es pop()
+paises.pop();
+console.log(paises);
+//este metodo elimina el ultimo elemento del array
+
+paises.shift();
+console.log(paises);
+//Este metodo sustituye el primer elemento del array
+paises.splice(4, 1, "Bolivia");
+console.log(paises);
+//Este metodo sustituye el elemento del index seleccionado por otro insertado por el usuario.
+
+
+//b.Crea un array llamado comunidades = ["Andalucía", "Aragón", "Canarias", "Cantabria", "Castilla y León"];
+// y compara los métodos push(), unshift() y splice() para insertar elementos en un array, y explica lo que hacen. 
+
+
+comunidades = ["Andalucía", "Aragón", "Canarias", "Cantabria", "Castilla y León"];
+
+//Metodo push.
+comunidades.push("Asturias");
+//añade al array un elemento al final
+console.log(comunidades);
+//Metodo unshift.
+comunidades.unshift("Valencia");
+//añade al array un elemento al inicio del array
+console.log(comunidades);
+//metodo splice.
+comunidades.splice(1, 0, "Cataluña");
+//añade al array un elemento sustituyendo el que se encuenetra en ese indice del array.
+console.log(comunidades);
+
+
+/*
+c.  En el array creado en el apartado a, muestra su contenido por pantalla,
+    después utiliza el método adecuado para ordenarlo y vuelve a mostrar su contenido. 
+*/
+
+console.log(paises);
+paises.sort();
+console.log(paises);
+
+
+/*
+d.	Utilizando el array ordenado del punto anterior,
+ define una variable llamada corte=país.slice(1, 4) y muestra el resultado del nuevo array
+*/
+
+corte=paises.slice(1, 4)
+console.log(corte);
+</script>
+</html>

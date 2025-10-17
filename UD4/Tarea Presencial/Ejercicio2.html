@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+/*
+2.- Vamos a gestionar una lista de países, para ello crea un array llamado países con España, 
+Portugal, Italia, Francia, Alemania, Polonia, Bélgica, Rumanía y Noruega. 
+Realiza un programa llamado países.html que incluya un fichero llamado paises.js para responder a las 
+siguientes cuestiones, utilizando los métodos apropiados y poniendo los comentarios oportunos en cada caso:
+	Mostrar el número de elementos del array y todos sus elementos.
+	Muestra los elementos del array en sentido inverso.
+	Añadir un país al principio del array, muestra la longitud y como queda ahora.
+	Añadir un país al final del array y muestra el resultado.
+	Borrar un país al principio del array (y decir cuál se ha borrado).
+	Borrar un país al final del array (y decir cuál se ha borrado).
+	Muestra el elemento que hay en la posición que el usuario indica.
+	Muestra la posición en la que se está un elemento que indica el usuario.
+	Muestra los elementos que se encuentran en un intervalo que el usuario indica.
+*/
+
+let paises = ["España", "Portugal", "Italia", "Francia", "Alemania", "Polonia", "Bélgica", "Rumanía", "Noruega"];
+
+
+//	Mostrar el número de elementos del array y todos sus elementos.
+totalPaises = paises.length;
+console.log(totalPaises);
+console.log(paises.join(","))
+
+
+//	Muestra los elementos del array en sentido inverso.
+console.log(paises.reverse());
+
+//	Añadir un país al principio del array, muestra la longitud y como queda ahora.
+paises.unshift("Hungria");
+console.log(paises.length);
+console.log(paises.join(","));
+
+//	Añadir un país al final del array y muestra el resultado.
+paises.push("Islandia");
+console.log(paises.length);
+console.log(paises);
+//	Borrar un país al principio del array (y decir cuál se ha borrado)
+let pais = paises.shift();
+console.log(paises);
+console.log(pais);
+
+
+//	Borrar un país al final del array (y decir cuál se ha borrado).
+let paisFinal = paises.pop();
+console.log(paises);
+console.log(paisFinal);
+
+
+//Muestra el elemento que hay en la posición que el usuario indica.
+console.log(paises[4]);
+//	Muestra la posición en la que se está un elemento que indica el usuario.
+console.log(paises.indexOf("España"))
+//	Muestra los elementos que se encuentran en un intervalo que el usuario indica.
+console.log(paises.splice(0, 4));
+</script>
+</html>

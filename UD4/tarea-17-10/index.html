@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //1. create un array con 5 productos 
+    let productos = [];
+    console.log(productos);
+
+    for(let i = 0; i<5; i++) {
+        productos.push({id: i, nombre: "cascabel" + i, categoria: "articulos" + i, precio: 10.30-i})
+    }
+    //2. Devuelve los prodcutos que incluyan una palabra dada (prompt)
+    let nombre = prompt("introduzca el nombre que busca");
+
+    const buscarNombre = (item => {
+        return item.nombre === nombre;
+    })
+    let indexNombre = productos.findIndex(buscarNombre);
+    if(indexNombre === -1) {
+        alert("Ese nombre te lo acabas de inventar maquina");
+    } else {
+        console.log(productos[indexNombre]);
+    }
+
+    //3. devuelve " " de una categoria dada. Si no hay productos pone un mensaje
+    let categoria = prompt("Introduzca la categoria");
+    const buscarCategoria = (item => {
+        return item.categoria === categoria;
+    })
+
+    let indexCategoria = productos.findIndex(buscarCategoria);
+    if(indexCategoria === -1) {
+        alert("Esa categoria no existe");
+    } else {
+        console.log(productos[indexCategoria])
+    }
+   //4 encuentra un producto dado su ID
+   let id = parseInt(prompt("Introduzca el id"));
+    const buscarId = (item => {
+        return item.id === id;
+    })
+
+    let id_res = productos.find(buscarId);
+    console.log(id_res);
+   
+
+</script>
