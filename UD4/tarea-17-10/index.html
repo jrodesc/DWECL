@@ -1,55 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body></body>
 </html>
 <script>
-    //1. create un array con 5 productos 
-    let productos = [];
-    console.log(productos);
+  //1. create un array con 5 productos
+  let productos = [];
+  console.log(productos);
 
-    for(let i = 0; i<5; i++) {
-        productos.push({id: i, nombre: "cascabel" + i, categoria: "articulos" + i, precio: 10.30-i})
+  for (let i = 0; i < 5; i++) {
+    productos.push({
+      id: i,
+      nombre: "cascabel" + i,
+      categoria: "articulos" + i,
+      precio: 10.3 - i,
+    });
+  }
+  //2. Devuelve los prodcutos que incluyan una palabra dada (prompt)
+  let nombre = prompt("introduzca el nombre que busca");
+
+  const buscarNombre = (item) => {
+    return item.nombre === nombre;
+  };
+  let indexNombre = productos.findIndex(buscarNombre);
+  if (indexNombre === -1) {
+    alert("Ese nombre te lo acabas de inventar maquina");
+  } else {
+    console.log(productos[indexNombre]);
+  }
+
+  //3. devuelve " " de una categoria dada. Si no hay productos pone un mensaje
+  let categoria = prompt("Introduzca la categoria");
+  const buscarCategoria = (item) => {
+    return item.categoria === categoria;
+  };
+
+  let indexCategoria = productos.findIndex(buscarCategoria);
+  if (indexCategoria === -1) {
+    alert("Esa categoria no existe");
+  } else {
+    console.log(productos[indexCategoria]);
+  }
+  //4 encuentra un producto dado su ID
+  let id = parseInt(prompt("Introduzca el id"));
+  const buscarId = (item) => {
+    return item.id === id;
+  };
+
+  let id_res = productos.find(buscarId);
+  console.log(id_res);
+
+  //5 devuelve los tres productos mas caros
+  function tresMasCaros(productos) {
+    return productos
+      .sort((a, b) => b.precio - a.precio)
+      .slice(0, 3);
+  }
+
+  const productosCaros = tresMasCaros(productos);
+
+  console.log(productosCaros);
+  //6 actualiza un producto dado su id, nombre, categoria, precio
+  let id_modificar = Number(prompt("Inserte el id a modificar."));
+
+  let nombre_nuevo = prompt("Inserte el nombre nuevo.");
+  let categoria_nuevo = prompt("Inserte la categoria nueva.");
+  let precio_nuevo = prompt("Inserte el nuevo precio.");
+  let id_nuevo = prompt("Inserte el nuevo id:");
+
+  function modificarProducto(id_modificar, id_nuevo, nombre_nuevo, categoria_nuevo, precio_nuevo, productos) {
+    //debemos seleccionar el objeto mediante su antiguo id.
+    for(let i = 0; i<productos.length ; i++) {
+      if(productos[i].id === id_modificar) {
+        productos[i].nombre = nombre_nuevo;
+        productos[i].categoria = categoria_nuevo;
+        productos[i].precio = precio_nuevo;
+        productos[i].id = id_nuevo;
+
+        return productos[i];
+      }
     }
-    //2. Devuelve los prodcutos que incluyan una palabra dada (prompt)
-    let nombre = prompt("introduzca el nombre que busca");
+  }
 
-    const buscarNombre = (item => {
-        return item.nombre === nombre;
-    })
-    let indexNombre = productos.findIndex(buscarNombre);
-    if(indexNombre === -1) {
-        alert("Ese nombre te lo acabas de inventar maquina");
-    } else {
-        console.log(productos[indexNombre]);
-    }
-
-    //3. devuelve " " de una categoria dada. Si no hay productos pone un mensaje
-    let categoria = prompt("Introduzca la categoria");
-    const buscarCategoria = (item => {
-        return item.categoria === categoria;
-    })
-
-    let indexCategoria = productos.findIndex(buscarCategoria);
-    if(indexCategoria === -1) {
-        alert("Esa categoria no existe");
-    } else {
-        console.log(productos[indexCategoria])
-    }
-   //4 encuentra un producto dado su ID
-   let id = parseInt(prompt("Introduzca el id"));
-    const buscarId = (item => {
-        return item.id === id;
-    })
-
-    let id_res = productos.find(buscarId);
-    console.log(id_res);
-   
-
+  const productoModificado = modificarProducto(id_modificar, id_nuevo, nombre_nuevo, categoria_nuevo, precio_nuevo, productos);
+  console.log(productoModificado);
 </script>
