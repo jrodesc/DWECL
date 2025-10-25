@@ -8,7 +8,6 @@ Animal.prototype.hacerRuido = function () {
 
 function Zebra(nombre, rayas) {
   Animal.call(this, nombre);
-
   this.rayas = rayas;
 }
 Zebra.prototype = Object.create(Animal.prototype);
@@ -22,7 +21,7 @@ Zebra.prototype.hacerRuido = function () {
 
 function Caiman(nombre, morder) {
   Animal.call(this, nombre);
-  this.rayas = morder;
+  this.morder = morder;
 }
 Caiman.prototype = Object.create(Animal.prototype);
 Caiman.prototype.constructor = Caiman;
@@ -34,8 +33,8 @@ Caiman.prototype.hacerRuido = function() {
 }
 
 
-const miZebra = new Zebra("Julio", 100);
+const miZebra = new Zebra("Julio", "rayas");
 
-const miCaiman = new Caiman("Angel", true);
+const miCaiman = new Caiman("Angel", "morder");
 miCaiman.hacerRuido();
 miZebra.hacerRuido();
