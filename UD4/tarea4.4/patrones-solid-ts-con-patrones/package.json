@@ -12,7 +12,9 @@
     "lsp": "npx ts-node src/solid/LSP.ts",
     "isp": "npx ts-node src/solid/ISP.ts",
     "dip": "npx ts-node src/solid/DIP.ts",
-    "exercise": "npx ts-node src/Exercise/Exercise.ts"
+    "exercise": "npx ts-node src/Exercise/Exercise.ts",
+    "exercise-2": "npx ts-node src/Exercise-ejercicio2/Exercise-cambio.ts",
+    "exercise-3": "npx ts-node src/Exercise-ejercicio3/Exercise-cambio.ts"
   },
   "devDependencies": {
     "typescript": "^5.0.0",
