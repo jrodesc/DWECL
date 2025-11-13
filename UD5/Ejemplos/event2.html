@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <title>Eventos</title>
+  </head>
+
+  <body>
+    <h1 id="title">Eventos</h1>
+    <form id="formulario">
+      <p>
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" value="Constantino" />
+        <label for="apellidos">Apellidos:</label>
+        <input
+          type="text"
+          name="apellidos"
+          id="apellidos"
+          value="Veiga Perez"
+        />
+        <input id="submit" type="submit" value="Enviar" />
+      </p>
+      Haga click en cada uno de los campos para ver más información.
+    </form>
+  </body>
+
+  <script type="text/javascript">
+    // Evento para hacer toggle del color del título
+    const title = document.querySelector("#title");
+    title.addEventListener(
+      "click",
+      function () {
+        if (this.style.backgroundColor === "black") {
+          this.style.backgroundColor = "white";
+          this.style.color = "black";
+        } else {
+          this.style.backgroundColor = "black";
+          this.style.color = "white";
+        }
+      },
+      true
+    );
+
+    // ¿Cómo procesamos el formulario?
+    // 1) Procesar errores
+    // 2) Si todo va ok, empaquetar los resultados en JSON
+    //SIEMPRE QUE UN ELEMENTO IMPLIQUE RECARGAR LA PAGINA DEBEMOS AÑADIR preventDefault();
+    const formulario = document.querySelector("#formulario");
+    formulario.addEventListener(
+      "submit",
+      function (event) {
+        event.preventDefault();
+        const nombre = document.getElementById("nombre");
+        const apellidos = document.getElementById("apellidos");
+
+        //procesamos errores.
+        if (true) {
+          const json = {
+            nombre: nombre.value,
+            apellidos: apellidos.value,
+          };
+        console.log(json);
+        }
+        //empaquetamos los resultados en un JSON
+      },
+      true
+    );
+  </script>
+</html>

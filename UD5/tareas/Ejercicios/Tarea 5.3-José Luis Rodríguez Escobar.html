@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Validación con HTML5</title>
+    <meta name="author" content="Ángel Berasuainr" />
+  </head>
+
+  <body>
+    <h1>Validar con Eventos y Expresiones Regulares</h1>
+    <div>
+      <form id="miFormulario">
+        <legend>Introduce los datos y pulsa Comprobar</legend>
+        <br /><br />
+        <div id="error-dni"></div>
+        <label for="dni">DNI:</label>
+        <input
+          id="dni"
+          type="text"
+          name="dni"
+          placeholder="00.000.000-A"
+          title="Esto no parece un DNI válido"
+          onblur="checkRequired(this)"
+        />
+        <br /><br />
+        <div id="error-nombre"></div>
+        <label for="nombre">Nombre:</label>
+        <input
+          id="nombre"
+          type="text"
+          name="nombre"
+          size="50"
+          onblur="checkRequired(this)"
+        />
+        <br /><br />
+        <div id="error-fecha"></div>
+        <label for="fecha">Fecha de Nacimiento:</label>
+        <input
+          id="fecha"
+          type="text"
+          name="fecha"
+          onblur="checkRequired(this)"
+        />
+        <br /><br />
+        <div id="error-email"></div>
+        <label for="email">Email:</label>
+        <input
+          id="email"
+          type="text"
+          name="text"
+          size="40"
+          placeholder="ejemplo@hola.com"
+          onblur="checkRequired(this)"
+        />
+        <br /><br />
+        <div id="error-sitioweb"></div>
+        <label for="sitioweb">Página WEB:</label>
+        <input
+          id="sitioweb"
+          type="text"
+          name="sitioweb"
+          placeholder="https://www.ejemplo.com"
+          title="No coincide con el formato"
+          onblur="checkRequired(this)"
+        />
+        <br /><br />
+        <div id="error-passwd"></div>
+        <label for="passwd">Contraseña:</label>
+        <input
+          id="passwd"
+          type="password"
+          name="passwd"
+          placeholder="De 8 a 10 caracteres"
+          title="Introduce una contraseña de entre 8 y 10 caracteres"
+          onblur="checkRequired(this) "
+        />
+        <br /><br />
+        <button type="submit">Comprobar</button>
+      </form>
+    </div>
+
+    <br /><br />
+
+    <script type="text/javascript"></script>
+  </body>
+  <script type="text/javascript">
+    const dni = document.querySelector("#dni");
+    dni.focus();
+
+    function checkRequired(objeto) {
+      const error = document.querySelector("#error-" + objeto.id);
+      if (!objeto.value.trim()) {
+        objeto.style = "border: 2px solid red";
+        error.innerHTML = `El campo ${objeto.name} es obligatorio`;
+        return false;
+      } else {
+        objeto.style = "";
+        error.innerHTML = "";
+        return true;
+      }
+    }
+
+    function validateDni(dni) {
+      const expresionDni = /^[\d]{2}\.[\d]{3}\.[\d]{3}\-[A-Z]{1}$/;
+      let dniValidar = dni.value;
+
+      if (expresionDni.exec(dniValidar)) {
+        return true;
+      }
+      return false;
+    }
+
+    function validateEmail(email) {
+      const expresionEmail = /^[a-zA-Z\d]{1,}\@{1}[a-zA-Z]{1,}\.[a-zA-Z]{2,3}$/;
+      let emailValidar = email.value;
+
+      if (expresionEmail.exec(emailValidar)) {
+        return true;
+      }
+      return false;
+    }
+
+    function validateWeb(pagina) {
+      const expresionPagina = /^http:\/\/www\.[a-zA-Z\d]+\.[a-zA-Z]{2,3}$/;
+      let paginaValidar = pagina.value;
+
+      if (expresionPagina.exec(paginaValidar)) {
+        return true;
+      }
+      return false;
+    }
+
+    function validateNombre(nombre) {
+      const expresionName = /^[a-zA-Z ]{1,50}$/;
+      let nombreValidar = nombre.value;
+
+      if (expresionName.exec(nombreValidar)) {
+        return true;
+      }
+      return false;
+    }
+
+    function validatePassword(password) {
+      const expresionPassword = /^[a-zA-Z\d]{8,10}$/;
+      let passwordValidar = password.value;
+
+      if (expresionPassword.exec(passwordValidar)) {
+        return true;
+      }
+      return false;
+    }
+
+    function validateFecha(fecha) {
+      const expresionFecha = /^\d{2}\/{1}\d{2}\/{1}\d{4}$/;
+      let fechaValidar = fecha.value;
+
+      if (expresionFecha.exec(fechaValidar)) {
+        return true;
+      }
+      return false;
+    }
+
+    const formulario = document.querySelector("#miFormulario");
+    formulario.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+
+      let errores = false;
+
+      const campoDni = document.querySelector("#dni");
+      const campoNombre = document.querySelector("#nombre");
+      const campoFecha = document.querySelector("#fecha");
+      const campoEmail = document.querySelector("#email");
+      const campoSitioWeb = document.querySelector("#sitioweb");
+      const campoPassword = document.querySelector("#passwd");
+
+      if (!checkRequired(campoDni)) {
+        errores = true;
+      } else if (!validateDni(campoDni)) {
+        const error = document.querySelector("#error-dni");
+        campoDni.style = "border: 2px solid red";
+        error.innerHTML = "El dni  no tiene el formato valido: 00.000.000-X";
+        errores = true;
+      }
+
+      if (!checkRequired(campoNombre)) {
+        errores = true;
+      } else if (!validateNombre(campoNombre)) {
+        const error = document.querySelector("#error-nombre");
+        campoNombre.style = "border: 2px solid red";
+        error.innerHTML =
+          "El nombre no tiene el formato valido: maximo 50 caracteres.";
+        errores = true;
+      }
+
+      if (!checkRequired(campoFecha)) {
+        errores = true;
+      } else if (!validateFecha(campoFecha)) {
+        const error = document.querySelector("#error-fecha");
+        campoFecha.style = "border: 2px solid red";
+        error.innerHTML =
+          "La fecha no tiene el formato valido: (dd/mm/aaaa).";
+        errores = true;
+      }
+
+      if (!checkRequired(campoEmail)) {
+        errores = true;
+      } else if (!validateEmail(campoEmail)) {
+        const error = document.querySelector("#error-email");
+        campoEmail.style = "border: 2px solid red";
+        error.innerHTML =
+          "El nombre no tiene el formato valido: xxxxx@yyyyy.zzz";
+        errores = true;
+      }
+
+      if (!checkRequired(campoSitioWeb)) {
+        errores = true;
+      } else if (!validateWeb(campoSitioWeb)) {
+        const error = document.querySelector("#error-sitioweb");
+        campoSitioWeb.style = "border: 2px solid red";
+        error.innerHTML =
+          "El sitio web no tiene el formato valido: http://www.xxxx.yyy";
+        errores = true;
+      }
+
+      if (!checkRequired(campoPassword)) {
+        errores = true;
+      } else if (!validatePassword(campoPassword)) {
+        const error = document.querySelector("#error-passwd");
+        campoPassword.style = "border: 2px solid red";
+        error.innerHTML =
+          "La contraseña no tiene el formato valido: entre 8 y 10 caracteres.";
+        errores = true;
+      }
+
+      if (!errores) {
+        formulario.submit();
+      }
+    });
+  </script>
+  <!--Respuesta a la pregunta
+  ¿Con las implementaciones realizadas en este ejercicio puede quedarse algún campo sin validar correctamente?
+  Justifica tu respuesta.
+  No, ningun campo puede quedarse sin validar y que a la vez se compruebe el formulario ya que ademas de comprobar
+  si se ha dejado o no vacio un campo mediante el metodo checkRequired(), tambien nos aseguramos con los metodos validateDni, validateNombre
+  validateFecha... de que ademas de no estar vacio cumple con la expresion regular impuesta en la funcion, si se detecta que checkRequired o validate
+  no devuelve true automaticamente se pone en rojo el input correspondiente y te dice que no cumple los requerimientos.
+  -->
+</html>
