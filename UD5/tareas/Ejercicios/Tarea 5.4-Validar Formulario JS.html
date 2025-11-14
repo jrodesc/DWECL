@@ -3,33 +3,124 @@
 
 <head>
     <title>Ejemplo Formularios</title>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
 </head>
 
 <body>
     <h1>Validar Formulario desde JS</h1>
-    <form>
-        <input type="text" name="usuario" /> Usuario<br><br>
-        <input type="password" name="password" /> Contraseña<br><br> AFILIADO
-        <br>
-        <input type="radio" name="afiliado" value="si" /> SI<br>
-        <input type="radio" name="afiliado" value="no" /> NO<br><br>
-        <select name="opciones">
-            <option value="">- Selecciona un valor -</option>
-            <option value="1">Primer valor</option>
-            <option value="2">Segundo valor</option>
-            <option value="3">Tercer valor</option>
-        </select>
-        <br><br> Marca al menos dos opciones<br>
-        <input type="checkbox" name="c1" value="C1" /> OP1<br>
-        <input type="checkbox" name="c2" value="C2" /> OP2<br>
-        <input type="checkbox" name="c3" value="C3" /> OP3<br><br>
+    <form onsubmit="return validar()">
+        <div id="error-usuario"></div>
+        <input type="text" name="usuario" id="usuario" onblur="checkRequired(this)" />Usuario<br /><br />
+        <div id="error-password"></div>
+        <input type="password" name="password" id="password" onblur="checkRequired(this)" />Contraseña<br /><br />
 
-        <input type="submit" name="env" value="Enviar" />
+        AFILIADO
+        <br />
+        <div id="error-afiliado"></div>
+        <input type="radio" name="afiliado" id="si" value="si" />SI<br />
+        <input type="radio" name="afiliado" id="no" value="no" />NO<br /><br />
+        <div id="error-valor"></div>
+
+        ESTADO CIVIL
+        <select name="opciones" id="valor" onblur="checkRequired(this)">
+            <option value="">- Estado civil -</option>
+            <option value="1">Casado</option>
+            <option value="2">Soltero</option>
+            <option value="3">Divorciado</option>
+        </select>
+
+        <br /><br />
+        Marque al menos 2 opciones.<br />
+        <div id="error-opciones"></div>
+        <input type="checkbox" name="lenguajes" value="C1" /> Java<br />
+        <input type="checkbox" name="lenguajes" value="C2" /> Python<br />
+        <input type="checkbox" name="lenguajes" value="C3" /> PHP<br />
+        <br />
+
+        <input type="submit" value="Enviar" />
     </form>
 
     <script type="text/javascript">
+        const usuario = document.querySelector("#usuario");
+        usuario.focus();
 
+        //funcion para comprobar que se ha marcado tanto usuario como contraseña como select.
+        function checkRequired(objeto) {
+            const error = document.querySelector("#error-" + objeto.id);
+            if (!objeto.value.trim()) {
+                objeto.style = "border: 2px solid red";
+                error.innerHTML = `El campo ${objeto.name} es obligatorio`;
+                return false;
+            } else {
+                objeto.style = "";
+                error.innerHTML = "";
+                return true;
+            }
+        }
+
+        //con esta funcion comprobamos que minimo uno de las opciones esta marcada.
+        function checkRadio(objeto) {
+            const error = document.querySelector("#error-afiliado");
+            const radios = document.getElementsByName(objeto);
+
+            for (let i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    error.innerHTML = "";
+                    return true;
+                }
+            }
+            error.innerHTML = 'Marque una de las dos opciones.'
+            return false;
+        }
+
+        //comprobamos que minimo haya 2 marcados
+        function checkMinBox(minimo) {
+            let marcados = 0;
+            const error = document.querySelector("#error-opciones");
+
+            const boxes = document.querySelectorAll('[name="lenguajes"]')
+            for (let i = 0; i < boxes.length; i++) {
+                if (boxes[i].checked) {
+                    error.innerHTML = "";
+                    marcados++;
+                }
+                if (marcados >= minimo) {
+                    return true
+                }
+            }
+            error.innerHTML = "Marque al menos 2 opciones."
+            return false;
+        }
+
+        function validar() {
+            let errores = false;
+            const usuario = document.querySelector("#usuario");
+            const password = document.querySelector("#password");
+            const valor = document.querySelector("#valor");
+
+            if(!checkRequired(usuario) || !checkRequired(password) || !checkRequired(valor)) {
+                errores = true;
+            }
+
+            if(!checkMinBox(2)) {
+                errores = true;
+            }
+
+            if(!checkRadio("afiliado")) {
+                errores = true;
+            }
+
+            if(errores) {
+                return false;
+            } else {
+                const objeto = {usuario: usuario.value, password: password.value, afiliado: getRadioValue("afiliado"), estado: document.querySelector("#valor"), lenguajes: getCheckboxValues("lenguajes")};
+                console.log(objeto);
+                return true;
+            }
+
+            //TODO: añadir lo del objeto literal y mostrarlo por consola.
+            //TODO: añadir lo de que te envia a Tarea 5.4-Validado.html
+        }
     </script>
 </body>
 
