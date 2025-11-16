@@ -144,8 +144,8 @@
                         letra = "E";
                         break;
                 }
-                const validado = document.querySelector("#respuesta");
-                validado.innerHTML = `DNI completo: ${contenido + letra}`;
+                const dni = document.querySelector("#dni");
+                dni.value = contenido + letra;
                 return false;
             }
             const validado = document.querySelector("#error-dni");
